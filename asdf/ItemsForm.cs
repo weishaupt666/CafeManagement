@@ -10,25 +10,35 @@ using System.Windows.Forms;
 
 namespace asdf
 {
-    public partial class UserOrder : Form
+    public partial class ItemsForm : Form
     {
-        public UserOrder()
+        public ItemsForm()
         {
             InitializeComponent();
         }
 
-        private void label4_Click(object sender, EventArgs e)
+        private void button1_Click(object sender, EventArgs e)
         {
-            Form1 login = new Form1();
-            login.Show();
-            this.Hide();
+
         }
 
         private void button3_Click(object sender, EventArgs e)
         {
-            ItemsForm Item = new ItemsForm();
-            Item.Show();
+            UserOrder order = new UserOrder();
+            order.Show();
             this.Hide();
+        }
+
+        private void label4_Click(object sender, EventArgs e)
+        {
+            Form1 form = new Form1();
+            form.Show();
+            this.Hide();
+        }
+
+        private void label7_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
         }
 
         private void button4_Click(object sender, EventArgs e)
@@ -36,11 +46,6 @@ namespace asdf
             UsersForm Item = new UsersForm();
             Item.Show();
             this.Hide();
-        }
-
-        private void label7_Click(object sender, EventArgs e)
-        {
-            Application.Exit();
         }
     }
 }

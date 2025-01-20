@@ -29,9 +29,16 @@ namespace asdf
 
         private void label4_Click(object sender, EventArgs e)
         {
-            this.Hide();
-            ItemForm guest = new ItemForm();
+            GuestOrder guest = new GuestOrder();
             guest.Show();
+            this.Hide();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            UserOrder uorder = new UserOrder();
+            uorder.Show();
+            this.Hide();
         }
     }
 }

@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace asdf
 {
-    public partial class ItemForm : Form
+    public partial class GuestOrder : Form
     {
-        public ItemForm()
+        public GuestOrder()
         {
             InitializeComponent();
         }
@@ -24,9 +24,9 @@ namespace asdf
 
         private void label4_Click(object sender, EventArgs e)
         {
-            this.Hide();
             Form1 login = new Form1();
             login.Show();
+            this.Hide();
         }
 
         private void panel1_Paint(object sender, PaintEventArgs e)
