@@ -143,6 +143,7 @@
             this.button5.TabIndex = 28;
             this.button5.Text = "Delete";
             this.button5.UseVisualStyleBackColor = false;
+            this.button5.Click += new System.EventHandler(this.button5_Click_1);
             // 
             // button2
             // 
@@ -158,6 +159,7 @@
             this.button2.TabIndex = 27;
             this.button2.Text = "Edit";
             this.button2.UseVisualStyleBackColor = false;
+            this.button2.Click += new System.EventHandler(this.button2_Click_1);
             // 
             // button1
             // 
@@ -254,12 +256,12 @@
             // 
             this.UsersGV.BackgroundColor = System.Drawing.Color.White;
             this.UsersGV.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.UsersGV.Location = new System.Drawing.Point(232, 99);
+            this.UsersGV.Location = new System.Drawing.Point(255, 99);
             this.UsersGV.Margin = new System.Windows.Forms.Padding(2);
             this.UsersGV.Name = "UsersGV";
             this.UsersGV.RowHeadersWidth = 51;
             this.UsersGV.RowTemplate.Height = 24;
-            this.UsersGV.Size = new System.Drawing.Size(392, 338);
+            this.UsersGV.Size = new System.Drawing.Size(353, 338);
             this.UsersGV.TabIndex = 4;
             this.UsersGV.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.ItemsGV_CellContentClick);
             // 
