@@ -20,6 +20,7 @@ namespace asdf
         {
             InitializeComponent();
         }
+
         public void populate()
         {
             Con.Open();
@@ -31,6 +32,19 @@ namespace asdf
             ItemsGV.DataSource = ds.Tables[0];
             Con.Close();
         }
+
+        public void FilterByCategory()
+        {
+            Con.Open();
+            string query = "select * from ItemTbl where Itemcat = '"+ categorycb.SelectedItem.ToString() +"'";
+            SqlDataAdapter sda = new SqlDataAdapter(query, Con);
+            SqlCommandBuilder builder = new SqlCommandBuilder(sda);
+            var ds = new DataSet();
+            sda.Fill(ds);
+            ItemsGV.DataSource = ds.Tables[0];
+            Con.Close();
+        }
+
         private void label4_Click(object sender, EventArgs e)
         {
             Form1 login = new Form1();
@@ -92,11 +106,13 @@ namespace asdf
             }
             else
             {
-                num += 1;
-                total = price * Int32.Parse(QtyTb.Text);
+                qty = Int32.Parse(QtyTb.Text);
+                num += qty;
+                total = price * qty;
                 table.Rows.Add(num, item, cat, price, total);
                 OrdersGV.DataSource = table;
                 flag = 0;
+                num = 0;
             }
             sum += total;
             LabelAmnt.Text = "Sum " + sum;
@@ -104,6 +120,27 @@ namespace asdf
 
         int num = 0;
         int price, qty, total;
+
+        private void comboBox1_SelectionChangeCommitted(object sender, EventArgs e)
+        {
+            FilterByCategory();
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            populate();
+        }
+
+        private void categorycb_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void QtyTb_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
         string item, cat;
 
         private void ItemsGV_CellContentClick(object sender, DataGridViewCellEventArgs e)
