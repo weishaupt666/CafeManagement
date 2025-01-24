@@ -103,7 +103,6 @@ namespace asdf
                 string query = "delete from ItemTbl where ItemName = '" + itemNameTb.Text + "'";
                 SqlCommand cmd = new SqlCommand(query, Con);
                 cmd.ExecuteNonQuery();
-                MessageBox.Show($"Item \"{itemNameTb.Text}\" deleted");
                 Con.Close();
                 populate();
             }
@@ -111,14 +110,7 @@ namespace asdf
 
         private void ItemsGV_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.RowIndex >= 0)
-            {
-                DataGridViewRow row = ItemsGV.Rows[e.RowIndex];
-                itemNumTb.Text = row.Cells[0].Value?.ToString();
-                itemNameTb.Text = row.Cells[1].Value?.ToString();
-                itemPriceTb.Text = row.Cells[2].Value?.ToString();
-                catCb.SelectedItem = row.Cells[3].Value?.ToString();
-            }
+
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -136,7 +128,6 @@ namespace asdf
                                 "' where ItemName = '" + itemNameTb.Text + "'";
                 SqlCommand cmd = new SqlCommand(query, Con);
                 cmd.ExecuteNonQuery();
-                MessageBox.Show("Item updated");
                 Con.Close();
                 populate();
             }
@@ -145,6 +136,18 @@ namespace asdf
         private void catCb_SelectedIndexChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void ItemsGV_CellContentClick_1(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0)
+            {
+                DataGridViewRow row = ItemsGV.Rows[e.RowIndex];
+                itemNumTb.Text = row.Cells[0].Value?.ToString();
+                itemNameTb.Text = row.Cells[1].Value?.ToString();
+                itemPriceTb.Text = row.Cells[2].Value?.ToString();
+                catCb.SelectedItem = row.Cells[3].Value?.ToString();
+            }
         }
     }
 }

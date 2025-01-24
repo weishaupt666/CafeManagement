@@ -28,6 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.button4 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.label7 = new System.Windows.Forms.Label();
@@ -43,9 +46,9 @@
             this.label2 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
             this.itemNumTb = new System.Windows.Forms.TextBox();
-            this.ItemsGV = new System.Windows.Forms.DataGridView();
             this.catCb = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.ItemsGV = new Guna.UI2.WinForms.Guna2DataGridView();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ItemsGV)).BeginInit();
             this.SuspendLayout();
@@ -111,6 +114,7 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.White;
+            this.panel1.Controls.Add(this.ItemsGV);
             this.panel1.Controls.Add(this.button5);
             this.panel1.Controls.Add(this.button2);
             this.panel1.Controls.Add(this.label6);
@@ -121,7 +125,6 @@
             this.panel1.Controls.Add(this.label2);
             this.panel1.Controls.Add(this.button1);
             this.panel1.Controls.Add(this.itemNumTb);
-            this.panel1.Controls.Add(this.ItemsGV);
             this.panel1.Controls.Add(this.catCb);
             this.panel1.Controls.Add(this.label1);
             this.panel1.ForeColor = System.Drawing.Color.DeepPink;
@@ -256,19 +259,6 @@
             this.itemNumTb.TabIndex = 10;
             this.itemNumTb.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
-            // ItemsGV
-            // 
-            this.ItemsGV.BackgroundColor = System.Drawing.Color.White;
-            this.ItemsGV.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.ItemsGV.Location = new System.Drawing.Point(232, 99);
-            this.ItemsGV.Margin = new System.Windows.Forms.Padding(2);
-            this.ItemsGV.Name = "ItemsGV";
-            this.ItemsGV.RowHeadersWidth = 51;
-            this.ItemsGV.RowTemplate.Height = 24;
-            this.ItemsGV.Size = new System.Drawing.Size(392, 338);
-            this.ItemsGV.TabIndex = 4;
-            this.ItemsGV.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.ItemsGV_CellContentClick);
-            // 
             // catCb
             // 
             this.catCb.Font = new System.Drawing.Font("Comic Sans MS", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -296,6 +286,56 @@
             this.label1.Size = new System.Drawing.Size(196, 38);
             this.label1.TabIndex = 2;
             this.label1.Text = "Manage Items";
+            // 
+            // ItemsGV
+            // 
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.White;
+            this.ItemsGV.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(88)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.ItemsGV.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            this.ItemsGV.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.DeepPink;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.ItemsGV.DefaultCellStyle = dataGridViewCellStyle3;
+            this.ItemsGV.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
+            this.ItemsGV.Location = new System.Drawing.Point(246, 99);
+            this.ItemsGV.Name = "ItemsGV";
+            this.ItemsGV.RowHeadersVisible = false;
+            this.ItemsGV.Size = new System.Drawing.Size(367, 372);
+            this.ItemsGV.TabIndex = 26;
+            this.ItemsGV.ThemeStyle.AlternatingRowsStyle.BackColor = System.Drawing.Color.White;
+            this.ItemsGV.ThemeStyle.AlternatingRowsStyle.Font = null;
+            this.ItemsGV.ThemeStyle.AlternatingRowsStyle.ForeColor = System.Drawing.Color.Empty;
+            this.ItemsGV.ThemeStyle.AlternatingRowsStyle.SelectionBackColor = System.Drawing.Color.Empty;
+            this.ItemsGV.ThemeStyle.AlternatingRowsStyle.SelectionForeColor = System.Drawing.Color.Empty;
+            this.ItemsGV.ThemeStyle.BackColor = System.Drawing.Color.White;
+            this.ItemsGV.ThemeStyle.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
+            this.ItemsGV.ThemeStyle.HeaderStyle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(88)))), ((int)(((byte)(255)))));
+            this.ItemsGV.ThemeStyle.HeaderStyle.BorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            this.ItemsGV.ThemeStyle.HeaderStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ItemsGV.ThemeStyle.HeaderStyle.ForeColor = System.Drawing.Color.White;
+            this.ItemsGV.ThemeStyle.HeaderStyle.HeaightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.ItemsGV.ThemeStyle.HeaderStyle.Height = 15;
+            this.ItemsGV.ThemeStyle.ReadOnly = false;
+            this.ItemsGV.ThemeStyle.RowsStyle.BackColor = System.Drawing.Color.White;
+            this.ItemsGV.ThemeStyle.RowsStyle.BorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
+            this.ItemsGV.ThemeStyle.RowsStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ItemsGV.ThemeStyle.RowsStyle.ForeColor = System.Drawing.Color.DeepPink;
+            this.ItemsGV.ThemeStyle.RowsStyle.Height = 22;
+            this.ItemsGV.ThemeStyle.RowsStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
+            this.ItemsGV.ThemeStyle.RowsStyle.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
+            this.ItemsGV.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.ItemsGV_CellContentClick_1);
             // 
             // ItemsForm
             // 
@@ -330,7 +370,6 @@
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.TextBox itemNumTb;
-        private System.Windows.Forms.DataGridView ItemsGV;
         private System.Windows.Forms.ComboBox catCb;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label6;
@@ -341,5 +380,6 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button button5;
         private System.Windows.Forms.Button button2;
+        private Guna.UI2.WinForms.Guna2DataGridView ItemsGV;
     }
 }

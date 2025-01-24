@@ -85,13 +85,7 @@ namespace asdf
 
         private void ItemsGV_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.RowIndex >= 0) 
-            {
-                DataGridViewRow row = UsersGV.Rows[e.RowIndex];
-                uNameTb.Text = row.Cells[0].Value?.ToString();
-                uPhoneTb.Text = row.Cells[1].Value?.ToString();
-                uPassTb.Text = row.Cells[2].Value?.ToString();
-            }
+
         }
 
         private void UsersForm_Load_1(object sender, EventArgs e)
@@ -111,7 +105,6 @@ namespace asdf
                 string query = "delete from UsersTbl where Uphone = '" + uPhoneTb.Text + "'";
                 SqlCommand cmd = new SqlCommand(query, Con);
                 cmd.ExecuteNonQuery();
-                MessageBox.Show("User deleted");
                 Con.Close();
                 populate();
             }
@@ -129,9 +122,24 @@ namespace asdf
                 string query = "update UsersTbl set Uname='" + uNameTb.Text + "', Uphone='" + uPhoneTb.Text + "' where Upassword='" + uPassTb.Text + "' ";
                 SqlCommand cmd = new SqlCommand(query, Con);
                 cmd.ExecuteNonQuery();
-                MessageBox.Show("User updated");
                 Con.Close();
                 populate();
+            }
+        }
+
+        private void uPassTb_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void UsersGV_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0)
+            {
+                DataGridViewRow row = UsersGV.Rows[e.RowIndex];
+                uNameTb.Text = row.Cells[0].Value?.ToString();
+                uPhoneTb.Text = row.Cells[1].Value?.ToString();
+                uPassTb.Text = row.Cells[2].Value?.ToString();
             }
         }
     }
