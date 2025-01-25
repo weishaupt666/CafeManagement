@@ -173,8 +173,10 @@
             this.PasswordTb.Location = new System.Drawing.Point(176, 270);
             this.PasswordTb.Margin = new System.Windows.Forms.Padding(2);
             this.PasswordTb.Name = "PasswordTb";
+            this.PasswordTb.PasswordChar = '*';
             this.PasswordTb.Size = new System.Drawing.Size(172, 32);
             this.PasswordTb.TabIndex = 10;
+            this.PasswordTb.TextChanged += new System.EventHandler(this.PasswordTb_TextChanged);
             // 
             // pictureBox1
             // 

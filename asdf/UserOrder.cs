@@ -16,10 +16,36 @@ namespace asdf
     public partial class UserOrder : Form
     {
         SqlConnection Con = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\Admin\Documents\Cafedb.mdf;Integrated Security=True;Connect Timeout=30");
+        DataTable table = new DataTable();
+        int flag = 0;
+        int sum = 0;
+        int num = 0;
+        int orderNum = 1;
+        int price, qty, total;
+        string item, cat;
+
         public UserOrder()
         {
             InitializeComponent();
         }
+
+        private void GetLastOrderNum()
+        {
+            Con.Open();
+            string query = "SELECT ISNULL(MAX(OrderNum), 1) FROM OrdersTbl";
+            SqlCommand cmd = new SqlCommand(query, Con);
+            object result = cmd.ExecuteScalar(); 
+            if (result != null)
+            {
+                orderNum = Convert.ToInt32(result) + 1;
+            }
+            else
+            {
+                orderNum = 1;
+            }
+            Con.Close();
+        }
+
 
         public void populate()
         {
@@ -43,6 +69,35 @@ namespace asdf
             sda.Fill(ds);
             ItemsGV.DataSource = ds.Tables[0];
             Con.Close();
+        }
+        private void UpdateItemQuantity(string itemName, int quantity)
+        {
+            try
+            {
+                Con.Open();
+                string query = "UPDATE ItemTbl SET ItemNum = ItemNum - @Quantity WHERE ItemName = @ItemName";
+                SqlCommand cmd = new SqlCommand(query, Con);
+                cmd.Parameters.AddWithValue("@Quantity", quantity);
+                cmd.Parameters.AddWithValue("@ItemName", itemName);
+
+                int rowsAffected = cmd.ExecuteNonQuery();
+                if (rowsAffected > 0)
+                {
+                    
+                }
+                else
+                {
+                    MessageBox.Show("Failed to update inventory. Item not found.");
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error: " + ex.Message);
+            }
+            finally
+            {
+                Con.Close();
+            }
         }
 
         private void label4_Click(object sender, EventArgs e)
@@ -70,18 +125,18 @@ namespace asdf
         {
             Application.Exit();
         }
-        DataTable table = new DataTable();
-        int flag = 0;
-        int sum = 0;
         private void UserOrder_Load(object sender, EventArgs e)
         {
             populate();
+            GetLastOrderNum();
+            DateLbl.Text = DateTime.Today.Date.ToString("dd-MM-yyyy");
             table.Columns.Add("Num", typeof(int));
             table.Columns.Add("Item", typeof(string));
             table.Columns.Add("Category", typeof(string));
             table.Columns.Add("UnitPrice", typeof(int));
             table.Columns.Add("Total", typeof(int));
             OrdersGV.DataSource = table;
+            SellerName.Text = Form1.user;
         }
 
         private void label1_Click(object sender, EventArgs e)
@@ -111,15 +166,14 @@ namespace asdf
                 total = price * qty;
                 table.Rows.Add(num, item, cat, price, total);
                 OrdersGV.DataSource = table;
+                UpdateItemQuantity(item, qty);
                 flag = 0;
                 num = 0;
+                populate();
             }
             sum += total;
             LabelAmnt.Text = "Sum " + sum;
         }
-
-        int num = 0;
-        int price, qty, total;
 
         private void comboBox1_SelectionChangeCommitted(object sender, EventArgs e)
         {
@@ -141,7 +195,25 @@ namespace asdf
 
         }
 
-        string item, cat;
+        private void button2_Click(object sender, EventArgs e)
+        {
+            Con.Open();
+            string query = "insert into OrdersTbl values('" + orderNum + "','" + DateLbl.Text + "','" + SellerName.Text + "','" + sum + "')";
+            SqlCommand cmd = new SqlCommand(query, Con);
+            cmd.ExecuteNonQuery();
+            Con.Close();
+            table.Clear();
+            OrdersGV.DataSource = table;
+            sum = 0;
+            LabelAmnt.Text = "Sum ";
+            orderNum++;
+        }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+            ViewOrders view = new ViewOrders();
+            view.Show();
+        }
 
         private void ItemsGV_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
