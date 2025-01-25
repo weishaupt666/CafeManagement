@@ -29,6 +29,9 @@ namespace asdf
             InitializeComponent();
         }
 
+        /*Metoda umożliwiająca sprawdzenie wartości pola OrderNum
+         w tabiele OrdersTbl i ustawienie jej na zmienną orderNum
+         aby śledzić zamówienia*/
         private void GetLastOrderNum()
         {
             Con.Open();
@@ -47,7 +50,7 @@ namespace asdf
         }
 
 
-        public void populate()
+        public void populate() // Metoda umożliwiająca nam przeglądanie danych z tabeli ItemTbl w naszym polu ItemsGV
         {
             Con.Open();
             string query = "select * from ItemTbl";
@@ -59,7 +62,7 @@ namespace asdf
             Con.Close();
         }
 
-        public void FilterByCategory()
+        public void FilterByCategory() // Metoda umożliwiająca filtrowanie wyświetlanych produktów według kategorii
         {
             Con.Open();
             string query = "select * from ItemTbl where Itemcat = '"+ categorycb.SelectedItem.ToString() +"'";
@@ -70,6 +73,8 @@ namespace asdf
             ItemsGV.DataSource = ds.Tables[0];
             Con.Close();
         }
+        /*Metoda umożliwiająca zmianę ilości elementu w tabeli ItemTbl
+         * po kliknięciu przycisku "Add to cart" */
         private void UpdateItemQuantity(string itemName, int quantity)
         {
             try
@@ -100,31 +105,36 @@ namespace asdf
             }
         }
 
-        private void label4_Click(object sender, EventArgs e)
+        private void label4_Click(object sender, EventArgs e) // Powrót do okna startowego
         {
             Form1 login = new Form1();
             login.Show();
             this.Hide();
         }
 
-        private void button3_Click(object sender, EventArgs e)
+        private void button3_Click(object sender, EventArgs e) // Przełącz na okno ItemsForm
         {
             ItemsForm Item = new ItemsForm();
             Item.Show();
             this.Hide();
         }
 
-        private void button4_Click(object sender, EventArgs e)
+        private void button4_Click(object sender, EventArgs e) // Przełącz na okno UsersForm
         {
             UsersForm Item = new UsersForm();
             Item.Show();
             this.Hide();
         }
 
-        private void label7_Click(object sender, EventArgs e)
+        private void label7_Click(object sender, EventArgs e) // Wyłączanie aplikacji
         {
             Application.Exit();
         }
+        /*Po uruchomieniu tego okna wywołujemy metodę populate 
+         * wypełniającą pole danymi za pomocą metody GetLastOrderNum
+         * ustawiamy wartość orderNum, pobieramy datę wyświetlaną w oknie
+         * i tworzymy kolumny dla tabeli kolekcji zamówień.
+         * Podajemy również od razu nazwę sprzedawcy, którą otrzymaliśmy przy logowaniu do programu.*/
         private void UserOrder_Load(object sender, EventArgs e)
         {
             populate();
@@ -139,17 +149,7 @@ namespace asdf
             SellerName.Text = Form1.user;
         }
 
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void guna2DataGridView2_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
-
-        private void button1_Click(object sender, EventArgs e)
+        private void button1_Click(object sender, EventArgs e) // Dodawanie produktu do koszyka, tworzenie tabeli koszyka (OrdersGV)
         {
             if (QtyTb.Text == "")
             {
@@ -180,20 +180,13 @@ namespace asdf
             FilterByCategory();
         }
 
-        private void button5_Click(object sender, EventArgs e)
+        private void button5_Click(object sender, EventArgs e) // Przycisk wywołujący ponownie metodę populate w celu zresetowania filtrowania
         {
             populate();
         }
-
-        private void categorycb_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void QtyTb_TextChanged(object sender, EventArgs e)
-        {
-
-        }
+        /* Kliknięcie przycisku powoduje utworzenie zapytania,
+         * które generuje dane o zamówieniach w tabeli OrdersTbl
+         * i czyści koszyk*/
 
         private void button2_Click(object sender, EventArgs e)
         {
@@ -215,7 +208,7 @@ namespace asdf
             view.Show();
         }
 
-        private void ItemsGV_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        private void ItemsGV_CellContentClick(object sender, DataGridViewCellEventArgs e) // Pobieramy dane o produkcie poprzez kliknięcie
         {
             if (e.RowIndex >= 0)
             {
@@ -226,7 +219,25 @@ namespace asdf
                 flag = 1;
             }
         }
+        private void label1_Click(object sender, EventArgs e)
+        {
 
-        
+        }
+
+        private void guna2DataGridView2_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void categorycb_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void QtyTb_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
     }
 }

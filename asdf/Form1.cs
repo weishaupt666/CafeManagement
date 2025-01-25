@@ -14,7 +14,7 @@ namespace asdf
 {
     public partial class Form1 : Form
     {
-        SqlConnection Con = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\Admin\Documents\Cafedb.mdf;Integrated Security=True;Connect Timeout=30");
+        SqlConnection Con = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\Admin\Documents\Cafedb.mdf;Integrated Security=True;Connect Timeout=30"); // Łączenie się z lokalną bazą danych
         public static string user;
 
         public Form1()
@@ -22,12 +22,12 @@ namespace asdf
             InitializeComponent();
         }
 
-        private void label7_Click(object sender, EventArgs e)
+        private void label7_Click(object sender, EventArgs e) // Wyjście z programu
         {
             Application.Exit();
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void button1_Click(object sender, EventArgs e)  // Weryfikacja loginu i hasła użytkownika z bazą danych
         {
             if (UnameTb.Text == "" || UnameTb.Text == "")
             {
@@ -64,6 +64,11 @@ namespace asdf
 
         }
         private void label4_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
         {
 
         }

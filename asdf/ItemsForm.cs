@@ -20,7 +20,7 @@ namespace asdf
             InitializeComponent();
         }
 
-        public void populate()
+        public void populate() // Metoda umożliwiająca wypełnienie pola danymi z bazy danych.
         {
             Con.Open();
             string query = "select * from ItemTbl";
@@ -32,7 +32,7 @@ namespace asdf
             Con.Close();
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void button1_Click(object sender, EventArgs e) // Po naciśnięciu przycisku można dodać element do bazy danych.
         {
             if(itemNameTb.Text == "" || itemNumTb.Text == "" || itemPriceTb.Text == "")
             {
@@ -50,48 +50,37 @@ namespace asdf
             }
         }
 
-        private void button3_Click(object sender, EventArgs e)
+        private void button3_Click(object sender, EventArgs e) // Otwiera okno UserOrder
         {
             UserOrder order = new UserOrder();
             order.Show();
             this.Hide();
         }
 
-        private void label4_Click(object sender, EventArgs e)
+        private void label4_Click(object sender, EventArgs e) // Umożliwia powrót do okna startowego
         {
             Form1 form = new Form1();
             form.Show();
             this.Hide();
         }
 
-        private void label7_Click(object sender, EventArgs e)
+        private void label7_Click(object sender, EventArgs e) // Wyłącza program
         {
             Application.Exit();
         }
 
-        private void button4_Click(object sender, EventArgs e)
+        private void button4_Click(object sender, EventArgs e) // Otwiera okno Usersform
         {
             UsersForm Item = new UsersForm();
             Item.Show();
             this.Hide();
         }
-
-        private void textBox1_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBox3_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
         private void ItemsForm_Load(object sender, EventArgs e)
         {
             populate();
         }
 
-        private void button5_Click(object sender, EventArgs e)
+        private void button5_Click(object sender, EventArgs e) // Po naciśnięciu przycisku element zostaje usunięty z bazy danych.
         {
             if (itemNameTb.Text == "")
             {
@@ -108,12 +97,8 @@ namespace asdf
             }
         }
 
-        private void ItemsGV_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
 
-        }
-
-        private void button2_Click(object sender, EventArgs e)
+        private void button2_Click(object sender, EventArgs e) // Naciskając przycisk możesz zmienić niektóre wartości danego artykułu, np. ilość lub cenę
         {
             if (itemNumTb.Text == "" || itemNameTb.Text == "" || itemPriceTb.Text == "")
             {
@@ -133,12 +118,7 @@ namespace asdf
             }
         }
 
-        private void catCb_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void ItemsGV_CellContentClick_1(object sender, DataGridViewCellEventArgs e)
+        private void ItemsGV_CellContentClick_1(object sender, DataGridViewCellEventArgs e) // Wypełnianie pól poprzez kliknięcie na tabelę z danymi
         {
             if (e.RowIndex >= 0)
             {
@@ -148,6 +128,25 @@ namespace asdf
                 itemPriceTb.Text = row.Cells[2].Value?.ToString();
                 catCb.SelectedItem = row.Cells[3].Value?.ToString();
             }
+        }
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox3_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void ItemsGV_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void catCb_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }
