@@ -14,12 +14,17 @@ namespace asdf
 {
     public partial class Form1 : Form
     {
-        SqlConnection Con = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\Admin\Documents\Cafedb.mdf;Integrated Security=True;Connect Timeout=30"); // Łączenie się z lokalną bazą danych
+        private string dbPath;
+        private SqlConnection Con;
+
         public static string user;
 
         public Form1()
         {
             InitializeComponent();
+            string basePath = AppDomain.CurrentDomain.BaseDirectory;
+            dbPath = System.IO.Path.Combine(basePath, "Cafedb.mdf");
+            Con = new SqlConnection($@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename={dbPath};Integrated Security=True;");
         }
 
         private void label7_Click(object sender, EventArgs e) // Wyjście z programu
@@ -69,6 +74,16 @@ namespace asdf
         }
 
         private void Form1_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void UnameTb_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button2_Click(object sender, EventArgs e)
         {
 
         }

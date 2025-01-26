@@ -15,7 +15,9 @@ namespace asdf
 {
     public partial class UserOrder : Form
     {
-        SqlConnection Con = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\Admin\Documents\Cafedb.mdf;Integrated Security=True;Connect Timeout=30");
+        private string dbPath;
+        private SqlConnection Con;
+
         DataTable table = new DataTable();
         int flag = 0;
         int sum = 0; // Zmienna do obliczenia sumy
@@ -27,6 +29,9 @@ namespace asdf
         public UserOrder()
         {
             InitializeComponent();
+            string basePath = AppDomain.CurrentDomain.BaseDirectory;
+            dbPath = System.IO.Path.Combine(basePath, "Cafedb.mdf");
+            Con = new SqlConnection($@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename={dbPath};Integrated Security=True;");
         }
 
         /*Metoda umożliwiająca sprawdzenie wartości pola OrderNum

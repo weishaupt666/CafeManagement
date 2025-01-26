@@ -166,6 +166,7 @@
             this.UnameTb.Name = "UnameTb";
             this.UnameTb.Size = new System.Drawing.Size(172, 32);
             this.UnameTb.TabIndex = 9;
+            this.UnameTb.TextChanged += new System.EventHandler(this.UnameTb_TextChanged);
             // 
             // PasswordTb
             // 

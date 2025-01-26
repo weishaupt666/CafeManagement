@@ -14,10 +14,14 @@ namespace asdf
 {
     public partial class ViewOrders : Form
     {
-        SqlConnection Con = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\Admin\Documents\Cafedb.mdf;Integrated Security=True;Connect Timeout=30");
+        private string dbPath;
+        private SqlConnection Con;
         public ViewOrders()
         {
             InitializeComponent();
+            string basePath = AppDomain.CurrentDomain.BaseDirectory;
+            dbPath = System.IO.Path.Combine(basePath, "Cafedb.mdf");
+            Con = new SqlConnection($@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename={dbPath};Integrated Security=True;");
         }
         public void populate() // Metoda wypełniania pola danymi z tabeli OrdersTbl
         {

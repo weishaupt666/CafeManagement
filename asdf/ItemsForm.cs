@@ -9,15 +9,20 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
+using System.IO;
 
 namespace asdf
 {
     public partial class ItemsForm : Form
     {
-        SqlConnection Con = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\Admin\Documents\Cafedb.mdf;Integrated Security=True;Connect Timeout=30");
+        private string dbPath;
+        private SqlConnection Con;
         public ItemsForm()
         {
             InitializeComponent();
+            string basePath = AppDomain.CurrentDomain.BaseDirectory;
+            dbPath = System.IO.Path.Combine(basePath, "Cafedb.mdf");
+            Con = new SqlConnection($@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename={dbPath};Integrated Security=True;");
         }
 
         public void populate() // Metoda umożliwiająca wypełnienie pola danymi z bazy danych.
