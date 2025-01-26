@@ -18,10 +18,10 @@ namespace asdf
         SqlConnection Con = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\Admin\Documents\Cafedb.mdf;Integrated Security=True;Connect Timeout=30");
         DataTable table = new DataTable();
         int flag = 0;
-        int sum = 0;
+        int sum = 0; // Zmienna do obliczenia sumy
         int num = 0;
-        int orderNum = 1;
-        int price, qty, total;
+        int orderNum = 1; // Zmienna do obliczenia numeru zamówienia
+        int price, qty, total; // Zmienne do tworzenia tabeli koszyka
         string item, cat;
 
         public UserOrder()

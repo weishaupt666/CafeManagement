@@ -19,7 +19,7 @@ namespace asdf
         {
             InitializeComponent();
         }
-        public void populate()
+        public void populate() // Metoda wypełniania pola danymi z tabeli OrdersTbl
         {
             Con.Open();
             string query = "select * from OrdersTbl";
@@ -31,7 +31,7 @@ namespace asdf
             Con.Close();
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void button1_Click(object sender, EventArgs e) // Zamykanie okna statystyk
         {
             this.Hide();
         }

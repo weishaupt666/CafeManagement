@@ -19,7 +19,7 @@ namespace asdf
             InitializeComponent();
         }
 
-        public void populate()
+        public void populate() // Metoda wypełniania pola danymi z bazy danych
         {
             Con.Open();
             string query = "select * from UsersTbl";
@@ -31,48 +31,33 @@ namespace asdf
             Con.Close();
         }
 
-        private void button1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void button2_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void button5_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void button3_Click(object sender, EventArgs e)
+        private void button3_Click(object sender, EventArgs e) // Kliknięcie przycisku otwiera okno UserOrder
         {
             UserOrder uorder = new UserOrder();
             uorder.Show();
             this.Hide();
         }
 
-        private void button4_Click(object sender, EventArgs e)
+        private void button4_Click(object sender, EventArgs e) // Kliknięcie przycisku otwiera okno ItemsForm
         {
             ItemsForm item = new ItemsForm();
             item.Show();
             this.Hide();
         }
 
-        private void label7_Click(object sender, EventArgs e)
+        private void label7_Click(object sender, EventArgs e) // Wyłączanie programu
         {
             Application.Exit();
         }
 
-        private void label4_Click(object sender, EventArgs e)
+        private void label4_Click(object sender, EventArgs e) // Powrót do ekranu startowego
         {
             Form1 form1 = new Form1();
             form1.Show();
             this.Hide();
         }
 
-        private void button1_Click_1(object sender, EventArgs e)
+        private void button1_Click_1(object sender, EventArgs e) // Dodawanie użytkownika
         {
             Con.Open();
             string query = "insert into UsersTbl values('" + uNameTb.Text + "','" + uPhoneTb.Text + "','" + uPassTb.Text + "')";
@@ -83,17 +68,13 @@ namespace asdf
             populate();
         }
 
-        private void ItemsGV_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
 
         private void UsersForm_Load_1(object sender, EventArgs e)
         {
             populate();
         }
 
-        private void button5_Click_1(object sender, EventArgs e)
+        private void button5_Click_1(object sender, EventArgs e) // Usuwanie użytkownika
         {
             if (uPhoneTb.Text == "")
             {
@@ -110,7 +91,7 @@ namespace asdf
             }
         }
 
-        private void button2_Click_1(object sender, EventArgs e)
+        private void button2_Click_1(object sender, EventArgs e) // Zmiana danych użytkownika
         {
             if (uNameTb.Text == "" || uPhoneTb.Text == "" || uPassTb.Text == "")
             {
@@ -127,12 +108,7 @@ namespace asdf
             }
         }
 
-        private void uPassTb_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void UsersGV_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        private void UsersGV_CellContentClick(object sender, DataGridViewCellEventArgs e) // Wypełnienie wymaganych pól danymi z bazy danych poprzez kliknięcie na tabelę.
         {
             if (e.RowIndex >= 0)
             {
@@ -142,5 +118,29 @@ namespace asdf
                 uPassTb.Text = row.Cells[2].Value?.ToString();
             }
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+
+        }
+        private void ItemsGV_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+        private void uPassTb_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
     }
 }
